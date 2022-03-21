@@ -6,7 +6,7 @@ The entrypoint for the pipeline is in `PipelineRunner` class:
 - It is streaming tweets from the Twitter API
 - For each tweet with a valid location, it is calling the Weather API to get the current temperature at this location
 - `SlidingAverageCalculator` class is used to calculate the sliding average of temperatures
-- Both the raw temperature and sliding averages are written to output files
+- Both the raw temperature and sliding average are written to output files
 
 
 ## How to start the service?
@@ -21,7 +21,7 @@ export WEATHER_API_KEY=${your_key}
 
 ## How to compile and run unit tests?
 ```bash
-# Compile the code and run test
+# Compile the code and run tests
 ./gradlew build
 
 # Run test only
@@ -38,16 +38,16 @@ Configuration is stored in `application.properties` file:
 
 ## Further Enhancements
 - Add error handling and recovery code:
-  - automatic restart if either API fails
+  - retry and timeouts for API calls
   - keep track of invalid tweets or coordinates for troubleshooting
-  - backpressure handling, what if either Twitter or Weather API is down
+  - backpressure handling, if either Twitter or Weather API is down, or spike in tweets
 - Dockerization for easy deployment
 - Add more unit tests for end-to-end. Current unit tests only cover small units.
 
 
 _Note_:
 > During my testing, I didn't find any tweets with `Polygon` place type, so I didn't add code for this case.
-> Only `Point` and `Feature place types are handled.
+> Only `Point` and `Feature` place types are handled.
 >
 
 
