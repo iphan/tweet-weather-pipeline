@@ -1,4 +1,4 @@
-# bighealth-metrics
+# tweet-weather-pipeline
 
 
 The data pipeline is implemented in Kotlin using Spring boot and WebFlux.
